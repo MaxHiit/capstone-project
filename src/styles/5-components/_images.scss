@@ -3,36 +3,47 @@
 .image-container {
   position: relative;
   scale: 1;
-  animation: scaleNotActiveImage 2s ease-in-out;
-
 }
 
 .image--active {
   scale: 0.9;
   animation: scaleActiveImage 2s ease-in-out;
 
+  @include helpers.keyframes(scaleActiveImage) {
+    0% {
+      scale: 1;
+    }
+    50% {
+      scale: 1.1;
+    }
+    100% {
+      scale: 0.9;
+    }
+  }
 
-@include helpers.keyframes(scaleActiveImage) {
-  0% {
-    scale: 1;
-  }
-  50% {
-    scale: 1.1;
-  }
-  100% {
-    scale: 0.9;
+  > svg > path {
+    fill: helpers.$titleColor;
   }
 }
 
-@include helpers.keyframes(scaleNotActiveImage) {
-  0% {
-    scale: 0.9;
+.image_icon--added > svg {
+  transform: rotate(45deg);
+  animation: rotateIcon 1s ease-out;
+
+  @include helpers.keyframes(rotateIcon) {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(45deg);
+    }
   }
-  50% {
-    scale: 1.1;
-  }
-  100% {
-    scale: 1;
+
+  > path {
+    fill: helpers.$titleColor;
   }
 }
 
@@ -44,14 +55,6 @@
   padding: 0.5rem;
   display: flex;
   justify-content: space-between;
-}
-
-.image_icon--active {
-  display: block;
-
-  & > svg > path {
-    fill: red;
-  }
 }
 
 .big {
