@@ -12,8 +12,35 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 0.5em 0;
+    position: relative;
   }
   h1 {
     color: helpers.$titleColor;
+  }
+
+  .count-wrapper {
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    transform: translateY(-50%);
+    background: helpers.$titleColor;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+
+    &.count-wrapper--hidden {
+      visibility: hidden;
+    }
+
+    &.count-wrapper--visible {
+      visibility: visible;
+    }
+
+    .count {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
   }
 }
