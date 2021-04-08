@@ -1,0 +1,15 @@
+/* Override the global class style reset to create your own basic style  */
+main {
+  height: auto;
+}
+
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
