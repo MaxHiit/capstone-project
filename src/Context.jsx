@@ -5,6 +5,7 @@ const Context = React.createContext();
 const ContextProvider = ({ children }) => {
   const [allPhotos, setAllPhotos] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+  const [countItem, setCountItem] = useState(0);
 
   const apiUrl =
     'https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json';
@@ -16,7 +17,7 @@ const ContextProvider = ({ children }) => {
       .then((data) => setAllPhotos(data));
   }, []);
 
-  // update isFavorite params of the photo when i click on the favorite button
+  // update isFavorite params of the img object when i click on the favorite button
   const toggleFavorite = (id) => {
     const updateArr = allPhotos.map((photo) => {
       if (photo.id === id) {
@@ -32,14 +33,24 @@ const ContextProvider = ({ children }) => {
     setAllPhotos(updateArr);
   };
 
-  // add an image to the cart
+  // add the image to the cart page
   const addToCart = (newItem) => {
-    console.log(newItem);
     setCartItems((prevItem) => [...prevItem, newItem]);
+    setCountItem(cartItems.length + 1);
+  };
+
+  // remove the image from the cart page
+  const removeFromCart = (id) => {
+    setCartItems((prevItem) => prevItem.filter((item) => item.id !== id));
+    setCountItem((prevCount) => prevCount - 1);
   };
 
   return (
-    <Context.Provider value={{ allPhotos, toggleFavorite, addToCart }}>{children}</Context.Provider>
+    <Context.Provider
+      value={{ allPhotos, cartItems, countItem, toggleFavorite, addToCart, removeFromCart }}
+    >
+      {children}
+    </Context.Provider>
   );
 };
 
