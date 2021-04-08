@@ -16,8 +16,6 @@ const Image = ({ img, className }) => {
     setIsHovered(false);
   };
 
-  // const getF
-
   return (
     <div
       className={
