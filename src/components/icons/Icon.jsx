@@ -1,9 +1,9 @@
 import React from 'react';
 import iconPath from './iconList';
 
-const Icon = ({ name, width, height, color, className = '', ...rest }) => {
+const Icon = React.forwardRef(({ name, width, height, color, className = '', ...rest }, ref) => {
   return (
-    <div className={className} {...rest}>
+    <div className={className} {...rest} ref={ref}>
       <svg
         viewBox='0 0 24 24'
         width={`${width}px`}
@@ -15,6 +15,6 @@ const Icon = ({ name, width, height, color, className = '', ...rest }) => {
       </svg>
     </div>
   );
-};
+});
 
 export default Icon;
