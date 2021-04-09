@@ -1,5 +1,41 @@
 @use "../1-helpers/helpers";
 
-h1 {
-  color: helpers.$titleColor;
+.cart-page-container {
+  margin: 5rem 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    color: helpers.$textColor;
+    text-align: center;
+  }
+
+  .cart-item-container {
+    margin: 3rem;
+  }
+
+  .total-cost {
+    text-align: right;
+    font-size: 1.3em;
+  }
+
+  .order-button {
+    background-color: helpers.$titleColor;
+    color: helpers.$textColor;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 1rem;
+    transition: all 0.2s ease-in-out;
+    border-radius: 0.7rem;
+    width: 200px;
+    align-self: center;
+    scale: 1;
+    transform: scale 1s ease-in;
+
+    &:hover {
+      opacity: 0.9;
+      scale: 0.9;
+    }
+  }
 }
